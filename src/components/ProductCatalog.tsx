@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, ChevronLeft, ChevronRight, Eye, Search, SlidersHorizontal, X } from "lucide-react";
+import { Eye, Search, SlidersHorizontal, X } from "lucide-react";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useLanguage } from "@/components/SiteShell";
 import { categories, flavorOrder, flavors, productTitle, products, sizeLabels, sizeOrder } from "@/lib/products";
@@ -14,7 +14,7 @@ function ProductTile({ product, onQuickView }: { product: Product; onQuickView: 
   return <article className="product-card">
     <Link href={`/products/${product.slug}`} className="product-card-main" aria-label={productTitle(product, language)}>
       <div className="product-card-media"><Image src={product.image} alt={productTitle(product, language)} fill sizes="(max-width: 600px) 48vw, (max-width: 900px) 31vw, 22vw" /></div>
-      <div className="product-card-info"><span className="product-card-type">{categories[language][product.category]}</span><h3>{flavors[language][product.flavor]}</h3><span className="product-card-bottom"><span>{sizeLabels[product.size]}</span><ArrowRight size={18} /></span></div>
+      <div className="product-card-info"><span className="product-card-type">{categories[language][product.category]}</span><h3>{flavors[language][product.flavor]}</h3><span className="product-card-bottom"><span>{sizeLabels[product.size]}</span></span></div>
     </Link>
     <button className="quick-view icon-button" type="button" aria-label={`${copy.common.viewImage}: ${productTitle(product, language)}`} title={copy.common.viewImage} onClick={() => onQuickView(product)}><Eye size={18} /></button>
   </article>;
@@ -44,7 +44,7 @@ function QuickView({ product, visibleProducts, onClose, onSelect }: { product: P
     <section className="quick-modal" role="dialog" aria-modal="true" aria-label={productTitle(product, language)}>
       <button ref={closeButton} className="modal-close icon-button" type="button" aria-label={copy.common.close} title={copy.common.close} onClick={onClose}><X size={23} /></button>
       <div className="quick-modal-image"><Image src={product.image} alt={productTitle(product, language)} fill sizes="(max-width: 700px) 75vw, 35vw" /></div>
-      <div className="quick-modal-copy"><span className="eyebrow green">YOLA / {sizeLabels[product.size]}</span><h2>{flavors[language][product.flavor]}</h2><p>{categories[language][product.category]}</p><div className="quick-modal-actions"><Link className="button button-primary" href={`/products/${product.slug}`}>{copy.common.viewProduct}<ArrowRight size={17} /></Link>{visibleProducts.length > 1 && <div className="modal-arrows"><button className="icon-button" type="button" aria-label={copy.common.prev} onClick={() => onSelect(previous)}><ChevronLeft size={22} /></button><button className="icon-button" type="button" aria-label={copy.common.next} onClick={() => onSelect(next)}><ChevronRight size={22} /></button></div>}</div></div>
+      <div className="quick-modal-copy"><span className="eyebrow green">YOLA / {sizeLabels[product.size]}</span><h2>{flavors[language][product.flavor]}</h2><p>{categories[language][product.category]}</p><div className="quick-modal-actions"><Link className="button button-primary" href={`/products/${product.slug}`}>{copy.common.viewProduct}</Link>{visibleProducts.length > 1 && <div className="modal-navigation"><button type="button" onClick={() => onSelect(previous)}>{copy.common.prev}</button><button type="button" onClick={() => onSelect(next)}>{copy.common.next}</button></div>}</div></div>
     </section>
   </div>;
 }

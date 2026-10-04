@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, Mail, Menu, Phone, X } from "lucide-react";
+import { Mail, Menu, Phone, X } from "lucide-react";
 import { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { translations } from "@/lib/i18n";
@@ -56,7 +56,7 @@ function Header() {
             <button type="button" aria-pressed={language === "en"} onClick={() => setLanguage("en")}>EN</button>
             <button type="button" aria-pressed={language === "fr"} onClick={() => setLanguage("fr")}>FR</button>
           </div>
-          <Link className="header-contact" href="/contact">{copy.nav.contact}<ArrowUpRight size={15} strokeWidth={2} /></Link>
+          <Link className="header-contact" href="/contact">{copy.nav.contact}</Link>
           <button className="menu-toggle icon-button" type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
