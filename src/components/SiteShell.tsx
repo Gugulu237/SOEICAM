@@ -89,7 +89,7 @@ function Footer() {
         <div>
           <h2>{copy.footer.getInTouch}</h2>
           <div className="footer-links">
-            <a href="tel:+237681218946"><Phone size={15} /> +237 681 21 89 46</a>
+            <a href="tel:+237688642293"><Phone size={15} /> +237 688 64 22 93</a>
             <a href="mailto:info@soeicam.com"><Mail size={15} /> info@soeicam.com</a>
             <span>Rue Sion 1, Yaoundé</span>
           </div>

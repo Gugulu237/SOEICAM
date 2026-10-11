@@ -20,7 +20,7 @@ export default function ProductDetail({ product }: { product: Product }) {
         <div className="detail-media"><Image src={product.image} alt={productTitle(product, language)} fill priority sizes="(max-width: 800px) 90vw, 46vw" /></div>
         <div className="detail-copy"><Image src="/brand/logos/yola.png" alt="Yola" width={118} height={68} /><span className="eyebrow green">{categories[language][product.category]}</span><h1>{flavors[language][product.flavor]}</h1><p className="detail-format">{sizeLabels[product.size]}</p><p className="detail-intro">{copy.products.availability}</p>
           <dl className="detail-specs"><div><dt>{copy.products.type}</dt><dd>{categories[language][product.category]}</dd></div><div><dt>{copy.products.flavor}</dt><dd>{flavors[language][product.flavor]}</dd></div><div><dt>{copy.products.format}</dt><dd>{sizeLabels[product.size]}</dd></div></dl>
-          <div className="detail-actions"><a className="button button-primary" href={`https://wa.me/237681218946?text=${encodeURIComponent(enquiry)}`} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} /> {copy.products.ask}</a><Link className="button button-outline" href="/contact">{copy.common.contact}</Link></div>
+          <div className="detail-actions"><a className="button button-primary" href={`https://wa.me/237688642293?text=${encodeURIComponent(enquiry)}`} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} /> {copy.products.ask}</a><Link className="button button-outline" href="/contact">{copy.common.contact}</Link></div>
           <p className="detail-note">{copy.products.packNote}</p>
         </div>
       </div>
