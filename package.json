@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port 3010",
-    "build": "next build",
-    "start": "next start --hostname 0.0.0.0 --port 3010",
+    "build": "next build --webpack --experimental-next-config-strip-types",
+    "start": "next start --hostname 0.0.0.0 --port 3010 --experimental-next-config-strip-types",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "lucide-react": "1.16.0",
-    "next": "16.3.3",
+    "next": "16.3.8",
     "react": "19.2.4",
     "react-dom": "19.2.4"
+  },
+  "optionalDependencies": {
+    "@next/swc-wasm-nodejs": "16.3.8"
   },
   "devDependencies": {
     "@types/node": "20.19.41",
