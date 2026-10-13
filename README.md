@@ -15,8 +15,8 @@ The catalogue is maintained in `src/lib/products.ts`. Add new product assets und
 
 ## Hostinger deployment
 
-Keep Node.js 24, npm, the build command `npm run build`, and the output directory `.next`.
+Node.js 22 and 24 are supported. Keep the existing Hostinger Node setting, npm, the build command `npm run build`, and the output directory `.next`.
 
-The build and start scripts use Node's native TypeScript loader for the single `next.config.ts` file. Production builds use Webpack so Next.js can fall back to the matching `@next/swc-wasm-nodejs` package on build hosts whose glibc cannot load the native SWC binary. Development still uses the default local bundler.
+The single `next.config.js` file uses CommonJS and contains no runtime imports. It does not need TypeScript transpilation or Node's experimental TypeScript configuration loader. Production builds use Webpack so Next.js can fall back to the matching `@next/swc-wasm-nodejs` package on build hosts whose glibc cannot load the native SWC binary. Development still uses the default local bundler.
 
 Commit `package-lock.json` whenever dependency versions change. Do not omit optional dependencies when installing on the build host. If Hostinger restores an old build or compiler cache, clear that cache before redeploying the latest commit.
