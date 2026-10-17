@@ -2,12 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Mail, Menu, Phone, X } from "lucide-react";
 import { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { translations } from "@/lib/i18n";
 import type { SiteCopy, SiteLanguage } from "@/lib/i18n";
+import { localizedPath } from "@/lib/locales";
+import { company } from "@/lib/company";
+import AnalyticsConsent from "./AnalyticsConsent";
 
 type LanguageContextValue = {
   language: SiteLanguage;
@@ -27,6 +30,7 @@ const links = [
   { href: "/", key: "home" },
   { href: "/products", key: "products" },
   { href: "/about", key: "about" },
+  { href: "/professionals", key: "professionals" },
   { href: "/dairy", key: "dairy" },
   { href: "/contact", key: "contact" },
 ] as const;
@@ -41,30 +45,103 @@ function Header() {
   return (
     <header className="site-header">
       <div className="header-inner page-container">
-        <Link href="/" className="brand-lockup" aria-label="SOEICAM home">
-          <Image src="/brand/logos/soeicam.png" alt="SOEICAM" width={150} height={61} priority />
+        <Link
+          href={localizedPath(language, "/")}
+          className="brand-lockup"
+          aria-label={language === "fr" ? "SOEICAM accueil" : "SOEICAM home"}
+        >
+          <Image
+            src="/brand/logos/soeicam.png"
+            alt="SOEICAM"
+            width={150}
+            height={61}
+            priority
+          />
         </Link>
-        <nav className="desktop-nav" aria-label="Main navigation">
+        <nav
+          className="desktop-nav"
+          aria-label={
+            language === "fr" ? "Navigation principale" : "Main navigation"
+          }
+        >
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className={pathname === link.href || (link.href === "/products" && pathname.startsWith("/products/")) ? "nav-link active" : "nav-link"}>
+            <Link
+              key={link.href}
+              href={localizedPath(language, link.href)}
+              className={
+                pathname === localizedPath(language, link.href) ||
+                (link.href === "/products" &&
+                  pathname.startsWith(`/${language}/products/`))
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+            >
               {copy.nav[link.key]}
             </Link>
           ))}
         </nav>
         <div className="header-actions">
-          <div className="language-switch" role="group" aria-label="Language / Langue">
-            <button type="button" aria-pressed={language === "en"} onClick={() => setLanguage("en")}>EN</button>
-            <button type="button" aria-pressed={language === "fr"} onClick={() => setLanguage("fr")}>FR</button>
+          <div
+            className="language-switch"
+            role="group"
+            aria-label="Language / Langue"
+          >
+            <button
+              type="button"
+              aria-pressed={language === "en"}
+              onClick={() => setLanguage("en")}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              aria-pressed={language === "fr"}
+              onClick={() => setLanguage("fr")}
+            >
+              FR
+            </button>
           </div>
-          <Link className="header-contact" href="/contact">{copy.nav.contact}</Link>
-          <button className="menu-toggle icon-button" type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+          <Link
+            className="header-contact"
+            href={localizedPath(language, "/contact")}
+          >
+            {copy.nav.contact}
+          </Link>
+          <button
+            className="menu-toggle icon-button"
+            type="button"
+            aria-label={
+              menuOpen
+                ? copy.common.close
+                : language === "fr"
+                  ? "Ouvrir le menu"
+                  : "Open menu"
+            }
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
       {menuOpen && (
-        <nav className="mobile-nav" aria-label="Mobile navigation">
-          {links.map((link) => <Link key={link.href} href={link.href} className={pathname === link.href ? "active" : ""}>{copy.nav[link.key]}</Link>)}
+        <nav
+          className="mobile-nav"
+          aria-label={
+            language === "fr" ? "Navigation mobile" : "Mobile navigation"
+          }
+        >
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={localizedPath(language, link.href)}
+              className={
+                pathname === localizedPath(language, link.href) ? "active" : ""
+              }
+            >
+              {copy.nav[link.key]}
+            </Link>
+          ))}
         </nav>
       )}
     </header>
@@ -72,55 +149,92 @@ function Header() {
 }
 
 function Footer() {
-  const { copy } = useLanguage();
+  const { copy, language } = useLanguage();
   return (
     <footer className="site-footer">
       <div className="page-container footer-main">
         <div className="footer-brand">
-          <Image src="/brand/logos/soeicam.png" alt="SOEICAM" width={178} height={73} />
+          <Image
+            src="/brand/logos/soeicam.png"
+            alt="SOEICAM"
+            width={178}
+            height={73}
+          />
           <p>{copy.footer.tagline}</p>
         </div>
         <div>
           <h2>{copy.footer.explore}</h2>
-          <nav className="footer-links" aria-label="Footer navigation">
-            {links.slice(1, 4).map((link) => <Link key={link.href} href={link.href}>{copy.nav[link.key]}</Link>)}
+          <nav
+            className="footer-links"
+            aria-label={
+              language === "fr"
+                ? "Navigation de pied de page"
+                : "Footer navigation"
+            }
+          >
+            {links.slice(1, 5).map((link) => (
+              <Link key={link.href} href={localizedPath(language, link.href)}>
+                {copy.nav[link.key]}
+              </Link>
+            ))}
+            <Link href={localizedPath(language, "/privacy")}>
+              {language === "fr" ? "Confidentialité" : "Privacy"}
+            </Link>
           </nav>
         </div>
         <div>
           <h2>{copy.footer.getInTouch}</h2>
           <div className="footer-links">
-            <a href="tel:+237688642293"><Phone size={15} /> +237 688 64 22 93</a>
-            <a href="mailto:info@soeicam.com"><Mail size={15} /> info@soeicam.com</a>
-            <span>Rue Sion 1, Yaoundé</span>
+            <a href="tel:+237688642293">
+              <Phone size={15} /> +237 688 64 22 93
+            </a>
+            <a href="mailto:info@soeicam.com">
+              <Mail size={15} /> info@soeicam.com
+            </a>
+            <span>
+              {language === "fr"
+                ? company.address
+                : company.address.replace("Cameroun", "Cameroon")}
+            </span>
           </div>
         </div>
       </div>
-      <div className="footer-bottom page-container"><span>© {new Date().getFullYear()} SOEICAM. {copy.footer.rights}</span><span>Cameroon · Cameroun</span></div>
+      <div className="footer-bottom page-container">
+        <span>
+          © {new Date().getFullYear()} SOEICAM. {copy.footer.rights}
+        </span>
+        <span>Cameroon · Cameroun</span>
+      </div>
     </footer>
   );
 }
 
-export default function SiteShell({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<SiteLanguage>("en");
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem("soeicam-language");
-    if (saved === "en" || saved === "fr") setLanguageState(saved);
-  }, []);
-
+export default function SiteShell({
+  children,
+  language,
+}: {
+  children: ReactNode;
+  language: SiteLanguage;
+}) {
+  const router = useRouter();
+  const pathname = usePathname();
   function setLanguage(next: SiteLanguage) {
-    setLanguageState(next);
-    document.documentElement.lang = next;
-    window.localStorage.setItem("soeicam-language", next);
+    if (next !== language)
+      router.push(
+        localizedPath(next, pathname) +
+          window.location.search +
+          window.location.hash,
+      );
   }
 
-  useEffect(() => { document.documentElement.lang = language; }, [language]);
-
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, copy: translations[language] }}>
+    <LanguageContext.Provider
+      value={{ language, setLanguage, copy: translations[language] }}
+    >
       <Header />
       <main id="main-content">{children}</main>
       <Footer />
+      <AnalyticsConsent />
     </LanguageContext.Provider>
   );
 }
