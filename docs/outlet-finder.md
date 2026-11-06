@@ -54,4 +54,12 @@ References: [Maps loading](https://developers.google.com/maps/documentation/java
 
 ## Verification
 
+### If the map loads without outlet pins
+
+Open `/api/outlets` on the deployed domain. A response with `outlets_unavailable` means the server could not read the ERP; changing Google Maps website restrictions will not repair that connection. The production environment must use the exact names `ERP_SUPABASE_URL` and `ERP_SUPABASE_SECRET_KEY`. Saved values must also be available to the running Node.js app; restart after changing server variables.
+
+Refresh the locator, then inspect the website's private runtime logs in Hostinger. Entries beginning with `[outlet-sync]` distinguish missing runtime configuration, invalid configuration, a connection failure, a timeout, a rejected database request, and malformed responses. A rejected request also records the table, HTTP status and a database error code when available. No credentials, project URLs, upstream messages or customer records are logged or returned publicly. For example, HTTP 401 indicates an authentication failure; HTTP 403 / `42501` indicates a permission failure; `PGRST205` indicates a missing table in the API schema cache. Check that the URL and server key belong to the same ERP project. Do not change database permissions or substitute a browser key just to silence an error.
+
+Leading/trailing whitespace and one matching pair of surrounding quotes are removed from configuration values before use. No environment-variable aliases or public-key fallback are used.
+
 `npm run typecheck` and `npm test` cover the website and outlet data boundary. Locator tests check public field projection, inactive/private categories, branches, malformed GPS, pagination, refresh/removal, concurrent requests, source failures and direction URLs. Test fixtures do not write ERP records. Verify both languages, town/type/text filters and the empty state in the local browser. Test map pin selection and “Near me” on a browser with the required Maps origin and location permission.

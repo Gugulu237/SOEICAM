@@ -5,7 +5,7 @@ const Module = require("node:module");
 const originalLoad = Module._load;
 Module._load = function(request, ...args) { return request === "server-only" ? {} : originalLoad.call(this, request, ...args); };
 const { publicOutlets, coordinates, distanceKm, searchText, directionsUrl } = require("../src/lib/outlets.ts");
-const { createOutletSource, readOutletRows } = require("../src/server/outlet-source.ts");
+const { createOutletSource, readOutletRows, outletFailureDiagnostic } = require("../src/server/outlet-source.ts");
 const shop = overrides => ({ id: "one", business_name: "Test shop", category: "shop", is_active: true, gps_lat: 3.85, gps_lng: 11.5, town: "Yaoundé", ...overrides });
 const config = { url: "https://example.supabase.co", key: "server-test-key" };
 
@@ -86,6 +86,8 @@ test("sync shares concurrent requests, refreshes edits and removals, and does no
 test("API failures return a generic 503 without source details", async () => {
   const source = require("../src/server/outlet-source.ts");
   const previous = source.getOutletSnapshot;
+  const previousLog = console.error, logs = [];
+  console.error = (...args) => logs.push(args);
   source.getOutletSnapshot = async () => { throw new Error("private credentials and database information"); };
   try {
     const { GET } = require("../src/app/api/outlets/route.ts");
@@ -93,5 +95,55 @@ test("API failures return a generic 503 without source details", async () => {
     assert.equal(response.status, 503);
     assert.deepEqual(await response.json(), { error: "outlets_unavailable" });
     assert.equal(response.headers.get("cache-control"), "no-store");
-  } finally { source.getOutletSnapshot = previous; }
+    assert.deepEqual(logs, [["[outlet-sync]", JSON.stringify({ reason: "unexpected" })]]);
+    assert.equal(JSON.stringify(logs).includes("private"), false);
+  } finally { source.getOutletSnapshot = previous; console.error = previousLog; }
+});
+
+test("pasted whitespace and surrounding quotes do not break the server credentials", async () => {
+  const quoted = { url: `  "${config.url}"  `, key: `  '${config.key}'  ` };
+  await readOutletRows("customer", quoted, async (url, options) => {
+    assert.equal(url.origin, config.url);
+    assert.equal(options.headers.apikey, config.key);
+    return new Response("[]");
+  });
+});
+
+test("missing runtime configuration is distinguished from invalid configuration without a network request", async () => {
+  const noRequest = async () => { assert.fail("Misconfigured sources must not make a request"); };
+  await assert.rejects(createOutletSource(() => ({ url: " ", key: "secret" }), noRequest)(), error => {
+    assert.deepEqual(outletFailureDiagnostic(error), { reason: "missing_configuration", missing: ["ERP_SUPABASE_URL"] });
+    return true;
+  });
+  await assert.rejects(readOutletRows("customer", { url: "https://user:private@example.com", key: "secret" }, noRequest), error => {
+    assert.deepEqual(outletFailureDiagnostic(error), { reason: "invalid_configuration" });
+    return true;
+  });
+});
+
+test("database failures identify the table and status but never include upstream private details", async () => {
+  for (const code of ["42501", "PGRST205", "private-credential"]) {
+    await assert.rejects(readOutletRows("customer_location", config, async () => new Response(JSON.stringify({ code, message: "private credentials", details: "private customer" }), { status: 403 })), error => {
+      const diagnostic = outletFailureDiagnostic(error);
+      assert.equal(diagnostic.reason, "database_rejected_request");
+      assert.equal(diagnostic.table, "customer_location");
+      assert.equal(diagnostic.status, 403);
+      assert.equal(diagnostic.databaseCode, code.startsWith("private") ? undefined : code);
+      assert.equal(JSON.stringify(diagnostic).includes("private"), false);
+      return true;
+    });
+  }
+});
+
+test("timeouts, connection failures and invalid replies have safe distinct diagnostics", async () => {
+  for (const [request, expected] of [
+    [async () => { throw new DOMException("private URL", "TimeoutError"); }, "request_timeout"],
+    [async () => { throw new TypeError("private connection URL"); }, "connection_failed"],
+    [async () => new Response("private invalid JSON"), "invalid_response"],
+  ]) {
+    await assert.rejects(readOutletRows("customer", config, request), error => {
+      assert.deepEqual(outletFailureDiagnostic(error), { reason: expected, table: "customer" });
+      return true;
+    });
+  }
 });
