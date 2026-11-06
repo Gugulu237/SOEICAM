@@ -56,8 +56,21 @@ export default function OutletMap({ outlets, selected, selectionRevision, onSele
     for (const outlet of outlets) {
       const element = document.createElement("div");
       element.className = "outlet-pin";
-      const glyph = document.createElement("span"); glyph.textContent = "Y"; glyph.style.transform = "rotate(45deg)"; element.append(glyph);
-      const marker = new maps.marker.AdvancedMarkerElement({ map, position: { lat: outlet.lat, lng: outlet.lng }, title: outlet.name, gmpClickable: true });
+      const tip = document.createElement("span"); tip.className = "outlet-pin-tip";
+      const face = document.createElement("span"); face.className = "outlet-pin-face";
+      const logo = document.createElement("img");
+      logo.src = "/_next/image?url=%2Fbrand%2Flogos%2Fyola.png&w=128&q=75";
+      logo.alt = ""; logo.width = 38; logo.height = 38; logo.decoding = "async"; logo.draggable = false;
+      const fallback = document.createElement("span");
+      fallback.className = "outlet-pin-fallback"; fallback.textContent = "YOLA"; fallback.hidden = true;
+      let originalLogo = false;
+      logo.onerror = () => {
+        if (!originalLogo) { originalLogo = true; logo.src = "/brand/logos/yola.png"; }
+        else { logo.hidden = true; fallback.hidden = false; }
+      };
+      element.setAttribute("aria-hidden", "true");
+      face.append(logo, fallback); element.append(tip, face);
+      const marker = new maps.marker.AdvancedMarkerElement({ map, position: { lat: outlet.lat, lng: outlet.lng }, title: outlet.name, gmpClickable: true, anchorLeft: "-50%", anchorTop: "-100%", zIndex: 10 });
       marker.append(element);
       marker.addEventListener("gmp-click", () => select.current(outlet.id), { signal: events.signal });
       currentPins.set(outlet.id, { marker, element });
@@ -77,7 +90,10 @@ export default function OutletMap({ outlets, selected, selectionRevision, onSele
   useEffect(() => {
     const state = mapState.current;
     if (status !== "ready" || !state) return;
-    for (const [id, pin] of pins.current) pin.element.classList.toggle("is-selected", id === selected);
+    for (const [id, pin] of pins.current) {
+      pin.element.classList.toggle("is-selected", id === selected);
+      pin.marker.zIndex = id === selected ? 1000 : 10;
+    }
     const outlet = outlets.find(item => item.id === selected), pin = pins.current.get(selected);
     if (!outlet || !pin) { state.info.close(); return; }
     const content = document.createElement("div"); content.className = "outlet-map-info";

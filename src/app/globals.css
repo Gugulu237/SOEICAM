@@ -48,8 +48,14 @@
 .outlet-map-message { position: absolute; inset: 0; padding: 40px; background: linear-gradient(145deg, #edf5f0, #e7eff6); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--muted); }
 .outlet-map-message svg { color: var(--green); margin-bottom: 18px; }
 .outlet-map-message p { max-width: 360px; font-size: .94rem; }
-.outlet-pin { width: 34px; height: 34px; border: 2px solid white; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--green); color: white; box-shadow: 0 3px 7px #173a5540; display: grid; place-items: center; font-family: Georgia, serif; font-weight: bold; font-style: italic; cursor: pointer; }
-.outlet-pin.is-selected { background: var(--blue); outline: 4px solid #14549a33; }
+.outlet-pin { --pin-size: 48px; position: relative; box-sizing: border-box; width: var(--pin-size); height: calc(var(--pin-size) + 14px); filter: drop-shadow(0 2px 3px #0f172a55); cursor: pointer; }
+.outlet-pin-tip { position: absolute; width: 16px; height: 16px; bottom: 3px; left: calc(50% - 8px); transform: rotate(45deg); background: #059669; }
+.outlet-pin-face { position: absolute; box-sizing: border-box; inset: 0 0 auto; height: var(--pin-size); border: 3px solid #059669; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.outlet-pin-face img { display: block; width: calc(100% - 6px); height: calc(100% - 6px); object-fit: contain; }
+.outlet-pin-face img[hidden], .outlet-pin-fallback[hidden] { display: none; }
+.outlet-pin-fallback { font: 800 12px system-ui, sans-serif; color: var(--blue-deep); }
+.outlet-pin.is-selected { --pin-size: 56px; }
+.outlet-pin.is-selected .outlet-pin-face { outline: 3px solid var(--ink); outline-offset: 2px; }
 .outlet-map-info { color: var(--ink); padding: 4px 2px 8px; max-width: 240px; line-height: 1.5; }
 .outlet-map-info p { margin: 8px 0; font-size: 12px; color: var(--muted); }
 .outlet-map-info a { color: var(--green); text-decoration: underline; font-weight: 700; }

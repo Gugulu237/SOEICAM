@@ -5,7 +5,7 @@ export type OutletMapInstance = {
   fitBounds(bounds: MapBounds, padding?: number): void;
 };
 type MapBounds = { extend(point: Point): void };
-export type OutletMarker = HTMLElement & { map: OutletMapInstance | null };
+export type OutletMarker = HTMLElement & { map: OutletMapInstance | null; zIndex: number };
 export type MapInfo = { setContent(content: HTMLElement): void; open(options: { map: OutletMapInstance; anchor: OutletMarker; shouldFocus?: boolean }): void; close(): void };
 export type GoogleOutletMaps = {
   Map: new (element: HTMLElement, options: Record<string, unknown>) => OutletMapInstance;
