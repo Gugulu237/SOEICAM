@@ -53,6 +53,9 @@ export default function HomePage() {
             <Link className="button button-quiet" href="/about">
               {copy.nav.about}
             </Link>
+            <Link className="button button-quiet" href="/find-our-products">
+              <MapPin size={17} aria-hidden="true" /> {copy.nav.findProducts}
+            </Link>
           </div>
         </div>
       </section>

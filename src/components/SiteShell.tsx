@@ -29,6 +29,7 @@ export function useLanguage() {
 const links = [
   { href: "/", key: "home" },
   { href: "/products", key: "products" },
+  { href: "/find-our-products", key: "findProducts" },
   { href: "/about", key: "about" },
   { href: "/professionals", key: "professionals" },
   { href: "/dairy", key: "dairy" },
@@ -172,7 +173,7 @@ function Footer() {
                 : "Footer navigation"
             }
           >
-            {links.slice(1, 5).map((link) => (
+            {links.filter(link => !["/", "/contact"].includes(link.href)).map((link) => (
               <Link key={link.href} href={localizedPath(language, link.href)}>
                 {copy.nav[link.key]}
               </Link>

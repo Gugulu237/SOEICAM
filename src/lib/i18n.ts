@@ -3,6 +3,7 @@ export const translations = {
     nav: {
       home: "Home",
       products: "Products",
+      findProducts: "Find our Products",
       about: "About us",
       professionals: "Professionals",
       dairy: "Dairy knowledge",
@@ -173,6 +174,7 @@ export const translations = {
     nav: {
       home: "Accueil",
       products: "Produits",
+      findProducts: "Où nous trouver",
       about: "À propos",
       professionals: "Professionnels",
       dairy: "Filière laitière",

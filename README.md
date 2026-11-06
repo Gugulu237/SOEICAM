@@ -11,6 +11,8 @@ npm run dev
 
 Open http://localhost:3010. The site has English and French views, a browsable Yola product range, company and dairy information pages, and direct contact options.
 
+The **Find our Products** page syncs retail outlet locations from the SOEICAM ERP database. See [outlet finder setup](docs/outlet-finder.md) for environment variables, Google Maps configuration, publication rules and validation.
+
 The catalogue is maintained in `src/lib/products.ts`. Add new product assets under `public/brand/products/` and a corresponding entry in that file. Product sizes follow the supplied catalogue naming; confirm packaging units before public launch where a pack image uses a different unit.
 
 ## Hostinger deployment

@@ -87,6 +87,11 @@ export const categoryContent = {
 
 export const pageContent = {
   fr: {
+    "find-our-products": {
+      title: "Où trouver les yaourts YOLA | SOEICAM",
+      description: "Trouvez un revendeur YOLA près de chez vous au Cameroun. Recherchez un magasin ou un quartier et obtenez l’itinéraire vers votre point de vente.",
+      h1: "Où trouver nos produits",
+    },
     home: {
       title: "SOEICAM | Yaourts YOLA au Cameroun",
       description:
@@ -136,6 +141,11 @@ export const pageContent = {
       description:
         "Discover YOLA by SOEICAM: stirred and drinking yogurts in flavours and formats for everyday breaks, family sharing and professional enquiries in Cameroon.",
       h1: "YOLA yogurt, made for Cameroon",
+    },
+    "find-our-products": {
+      title: "Find YOLA yogurt near you | SOEICAM",
+      description: "Find a YOLA retailer near you in Cameroon. Search by shop, town or neighbourhood and get Google Maps directions to your chosen outlet.",
+      h1: "Find our Products",
     },
     products: {
       title: "YOLA yogurt products: flavours and sizes | SOEICAM",

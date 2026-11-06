@@ -6,6 +6,7 @@ const nextConfig = {
     return [
       "/",
       "/products",
+      "/find-our-products",
       "/products/:slug",
       "/about",
       "/dairy",
