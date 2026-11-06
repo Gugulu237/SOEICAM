@@ -94,7 +94,6 @@ export default function FindProductsPage() {
       </div>
       {locationError && <p className="locator-notice" role="alert">{copy.geolocationError}</p>}
       <div className="locator-results-bar">
-        <p role="status" aria-live="polite">{status === "loading" ? copy.loading : status === "error" ? "—" : <><strong>{filtered.length}</strong> {filtered.length === 1 ? copy.singular : copy.results}</>}</p>
         <div>{position && <button onClick={() => { geoRequest.current++; setPosition(null); setLocating(false); }}><X size={14} aria-hidden="true" />{copy.clearLocation}</button>}{(query || town || category) && <button onClick={() => { setQuery(""); setTown(""); setCategory(""); setSelected(""); }}>{copy.reset}</button>}</div>
       </div>
       <div className="locator-map-layout">

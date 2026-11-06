@@ -37,7 +37,7 @@
 .locator-filter label { display: block; font-size: .66rem; font-weight: 700; text-transform: uppercase; color: var(--muted); letter-spacing: .05em; }
 .locator-filter select { width: 100%; min-height: 29px; border: 0; background: white; color: var(--ink); font-size: .9rem; }
 .locator-nearby { border-radius: 6px; }
-.locator-results-bar { min-height: 58px; display: flex; gap: 16px; align-items: center; justify-content: space-between; font-size: .84rem; }
+.locator-results-bar { min-height: 24px; display: flex; gap: 16px; align-items: center; justify-content: flex-end; font-size: .84rem; }
 .locator-results-bar p { margin: 0; color: var(--muted); }
 .locator-results-bar strong { color: var(--ink); }
 .locator-results-bar > div { display: flex; flex-wrap: wrap; gap: 16px; justify-content: flex-end; }
