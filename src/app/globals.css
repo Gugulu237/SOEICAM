@@ -54,7 +54,9 @@
 .outlet-pin-face img { display: block; width: calc(100% - 6px); height: calc(100% - 6px); object-fit: contain; }
 .outlet-pin-face img[hidden], .outlet-pin-fallback[hidden] { display: none; }
 .outlet-pin-fallback { font: 800 12px system-ui, sans-serif; color: var(--blue-deep); }
+.outlet-pin-name { position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%); box-sizing: border-box; width: max-content; max-width: 160px; padding: 3px 7px; border: 1px solid #059669; border-radius: 5px; background: white; color: #0f172a; font: 600 11px/15px system-ui, sans-serif; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; box-shadow: 0 1px 3px #0f172a22; }
 .outlet-pin.is-selected { --pin-size: 56px; }
+.outlet-pin.is-selected .outlet-pin-name { max-width: 200px; }
 .outlet-pin.is-selected .outlet-pin-face { outline: 3px solid var(--ink); outline-offset: 2px; }
 .outlet-map-info { color: var(--ink); padding: 4px 2px 8px; max-width: 240px; line-height: 1.5; }
 .outlet-map-info p { margin: 8px 0; font-size: 12px; color: var(--muted); }

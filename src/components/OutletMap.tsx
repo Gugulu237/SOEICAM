@@ -63,13 +63,15 @@ export default function OutletMap({ outlets, selected, selectionRevision, onSele
       logo.alt = ""; logo.width = 38; logo.height = 38; logo.decoding = "async"; logo.draggable = false;
       const fallback = document.createElement("span");
       fallback.className = "outlet-pin-fallback"; fallback.textContent = "YOLA"; fallback.hidden = true;
+      const label = document.createElement("span");
+      label.className = "outlet-pin-name"; label.textContent = outlet.name;
       let originalLogo = false;
       logo.onerror = () => {
         if (!originalLogo) { originalLogo = true; logo.src = "/brand/logos/yola.png"; }
         else { logo.hidden = true; fallback.hidden = false; }
       };
       element.setAttribute("aria-hidden", "true");
-      face.append(logo, fallback); element.append(tip, face);
+      face.append(logo, fallback); element.append(tip, face, label);
       const marker = new maps.marker.AdvancedMarkerElement({ map, position: { lat: outlet.lat, lng: outlet.lng }, title: outlet.name, gmpClickable: true, anchorLeft: "-50%", anchorTop: "-100%", zIndex: 10 });
       marker.append(element);
       marker.addEventListener("gmp-click", () => select.current(outlet.id), { signal: events.signal });
@@ -78,7 +80,7 @@ export default function OutletMap({ outlets, selected, selectionRevision, onSele
     }
     pins.current = currentPins;
     if (outlets.length === 1) { map.panTo(outlets[0]); map.setZoom(15); }
-    else if (outlets.length > 1) map.fitBounds(bounds, 60);
+    else if (outlets.length > 1) map.fitBounds(bounds, 100);
     return () => {
       events.abort();
       info.close();
