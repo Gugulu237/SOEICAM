@@ -20,7 +20,7 @@
 ## Needed before stronger claims are published
 
 - Approved ingredient/allergen and nutrition specifications for each reference, including the exact Non Sucré claim. Do not infer zero sugar, no-added-sugar, low fat, high protein or probiotic benefits.
-- Clarify packaging inconsistencies for future labels: some 500 g cup references show 500 ml. The website keeps the existing units by instruction; it does not equate mass and volume.
+- Clarify packaging inconsistencies for future labels: the new cups supplied as 250 g have lids marked 250 ml, and some 500 g cup references show 500 ml. The website keeps the supplied product units; image artwork is not relabelled and no mass-to-volume equivalence is claimed.
 - Confirm the 10 kg specification and whether another unsweetened professional reference exists. Current imagery is Nature Sucré.
 - Validate any culinary or transformation use, including sauces, marinades and shawarma. No fermentation-starter/kossam suitability is assumed.
 - Approved shelf life, storage temperatures, after-opening guidance and serving sizes. Current copy defers to the product label.

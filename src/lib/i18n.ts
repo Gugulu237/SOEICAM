@@ -93,7 +93,7 @@ export const translations = {
         "We connect customers and resellers with our product range.",
       brandTitle: "YOLA, our yogurt brand",
       brandTextLong:
-        "YOLA brings together 19 product variants: drinking yogurts in 250 g, 330 g and 500 g bottles, and stirred yogurts in 500 g, 1 kg, 2.5 kg and 10 kg packs. Explore a personal favourite, choose a sharing format or speak with SOEICAM about commercial supply.",
+        "YOLA brings together 22 product variants: drinking yogurts in 250 g, 330 g and 500 g bottles, and stirred yogurts in 250 g, 500 g, 1 kg, 2.5 kg and 10 kg packs. Explore a personal favourite, choose a sharing format or speak with SOEICAM about commercial supply.",
       learn: "Learn about dairy processing",
       contactTitle: "Let's talk about SOEICAM",
       contactText:
@@ -266,7 +266,7 @@ export const translations = {
         "Nous mettons notre gamme à la portée des clients et des revendeurs.",
       brandTitle: "YOLA, notre marque de yaourts",
       brandTextLong:
-        "YOLA réunit 19 références : des yaourts à boire en bouteilles de 250 g, 330 g et 500 g, et des yaourts brassés de 500 g, 1 kg, 2,5 kg et 10 kg. Trouvez votre parfum, choisissez un format à partager ou échangez avec SOEICAM sur un approvisionnement commercial.",
+        "YOLA réunit 22 références : des yaourts à boire en bouteilles de 250 g, 330 g et 500 g, et des yaourts brassés de 250 g, 500 g, 1 kg, 2,5 kg et 10 kg. Trouvez votre parfum, choisissez un format à partager ou échangez avec SOEICAM sur un approvisionnement commercial.",
       learn: "Découvrir la transformation laitière",
       contactTitle: "Parlons de SOEICAM",
       contactText:

@@ -16,6 +16,66 @@ const entry = (
 ): Copy => ({ short, paragraphs, taste, occasions });
 
 export const productContent: Record<string, Pair> = {
+  "stirred-nature-250g": {
+    en: entry(
+      "Discover Yola Natural stirred yogurt in a compact 250 g cup. Its familiar dairy flavour and gently sweet, smooth texture make a simple spoonable choice for a chilled break.",
+      [
+        "Yola Natural 250 g brings the Nature Sucré flavour to the smallest cup in the stirred range. Its smooth, spoonable texture is distinct from the flowing consistency of the Natural 250 g drinking bottle. Choose the cup when you prefer to enjoy your yogurt with a spoon.",
+        "Serve chilled for a breakfast accompaniment, an afternoon pause or a simple dessert. Enjoy it on its own or add cereal or fruit at home. Follow the storage directions on the package, including when carrying it away from home. For a larger cup, compare Natural 500 g; for sharing, explore the 1 kg and 2.5 kg packs. Contact SOEICAM for availability and supply enquiries.",
+      ],
+      "Familiar dairy flavour, gentle sweetness and a smooth stirred texture.",
+      ["A chilled yogurt break", "Alongside breakfast", "A simple spoonable dessert"],
+    ),
+    fr: entry(
+      "Découvrez le yaourt brassé Yola Nature dans un petit pot de 250 g. Son goût laitier familier et sa texture lisse, légèrement sucrée, se savourent à la cuillère lors d'une pause fraîche.",
+      [
+        "Yola Nature 250 g propose la saveur Nature Sucré dans le plus petit pot de la gamme brassée. Sa texture onctueuse à la cuillère se distingue de la consistance fluide de la bouteille Nature 250 g à boire. Choisissez le pot pour retrouver le plaisir d'un yaourt brassé en petit format.",
+        "Dégustez-le frais au petit-déjeuner, lors d'une pause ou en dessert. Vous pouvez le savourer seul ou ajouter des céréales et des fruits à la maison. Respectez les indications de conservation de l'emballage, y compris pendant le transport. Pour un pot plus généreux, découvrez Nature 500 g ; pour partager, comparez les formats 1 kg et 2,5 kg. Contactez SOEICAM pour la disponibilité et l'approvisionnement.",
+      ],
+      "Goût laitier familier, douceur légère et texture brassée lisse.",
+      ["Pause fraîche à la cuillère", "Avec le petit-déjeuner", "Dessert simple"],
+    ),
+  },
+  "stirred-strawberry-250g": {
+    en: entry(
+      "Enjoy Yola Strawberry stirred yogurt in a small 250 g cup. A recognisable strawberry-flavoured character meets a creamy, spoonable texture for a refreshing snack or dessert.",
+      [
+        "Yola Strawberry 250 g adds a fruity option to the compact stirred-yogurt range. The red cup contains a smooth yogurt intended to be enjoyed with a spoon, unlike the Strawberry 250 g drinking bottle. The flavour description does not imply the presence of fruit pieces.",
+        "Choose this small cup for a chilled pause, alongside breakfast or after a meal. Serve it on its own or with accompaniments selected at home, and follow the package directions for storage and transport. The same stirred range includes Strawberry in 500 g and 2.5 kg formats when you want a larger pack. Ask SOEICAM about availability or include this reference in a product-specific supply enquiry.",
+      ],
+      "Recognisable strawberry flavour with a smooth, creamy stirred texture.",
+      ["A fruity yogurt pause", "A chilled dessert", "Discovering the stirred range"],
+    ),
+    fr: entry(
+      "Savourez le yaourt brassé Yola Fraise dans un petit pot de 250 g. Un parfum de fraise reconnaissable accompagne une texture crémeuse à la cuillère, pour une pause ou un dessert frais.",
+      [
+        "Yola Fraise 250 g apporte une touche fruitée à la gamme de petits pots brassés. Ce pot rouge se déguste à la cuillère, contrairement à la bouteille Fraise 250 g à boire. La description du parfum ne suppose pas la présence de morceaux de fruits.",
+        "Choisissez ce petit format pour une pause fraîche, avec le petit-déjeuner ou après un repas. Dégustez-le seul ou avec des accompagnements choisis à la maison, en suivant les indications de conservation et de transport figurant sur l'emballage. La gamme brassée comprend aussi Fraise en 500 g et 2,5 kg pour les envies de plus grand format. Demandez à SOEICAM la disponibilité ou précisez cette référence dans votre demande d'approvisionnement.",
+      ],
+      "Parfum de fraise reconnaissable et texture brassée lisse et crémeuse.",
+      ["Pause fruitée", "Dessert frais", "Découverte de la gamme brassée"],
+    ),
+  },
+  "stirred-vanilla-250g": {
+    en: entry(
+      "Find Yola Vanilla stirred yogurt in a compact 250 g cup. Its soft vanilla-flavoured character and smooth, spoonable texture offer an aromatic option for a chilled yogurt moment.",
+      [
+        "Yola Vanilla 250 g brings the familiar Vanille flavour to a smaller stirred-yogurt cup. The grey-and-white packaging distinguishes it from the blue Natural and red Strawberry cups in the same format. Its smooth consistency is designed for enjoying with a spoon, rather than drinking from a bottle.",
+        "Serve chilled on its own to enjoy the vanilla notes, or alongside breakfast and toppings chosen at home. Keep and transport the cup according to the directions on its label. For the same flavour in larger stirred packs, compare Vanilla 500 g, 1 kg and 2.5 kg. Contact SOEICAM to check the available formats or discuss supplies for your shop.",
+      ],
+      "Soft vanilla notes and a smooth, spoonable stirred texture.",
+      ["An aromatic yogurt break", "Alongside cereal at breakfast", "A chilled after-meal treat"],
+    ),
+    fr: entry(
+      "Retrouvez le yaourt brassé Yola Vanille dans un petit pot de 250 g. Un parfum doux de vanille et une texture lisse à la cuillère pour accompagner vos moments de dégustation fraîche.",
+      [
+        "Yola Vanille 250 g propose le parfum Vanille familier dans un plus petit pot brassé. Son emballage gris et blanc le distingue des pots Nature bleus et Fraise rouges du même format. Sa texture lisse se savoure à la cuillère, contrairement au yaourt à boire en bouteille.",
+        "Dégustez-le frais, seul pour apprécier les notes de vanille, ou avec un petit-déjeuner et des accompagnements choisis à la maison. Conservez et transportez le pot selon les indications de son étiquette. Pour retrouver ce parfum dans un contenant plus généreux, comparez Vanille 500 g, 1 kg et 2,5 kg. Contactez SOEICAM pour connaître les formats disponibles ou échanger sur l'approvisionnement de votre commerce.",
+      ],
+      "Notes douces de vanille et texture brassée lisse à la cuillère.",
+      ["Pause parfumée", "Avec des céréales au petit-déjeuner", "Dessert frais après le repas"],
+    ),
+  },
   "stirred-nature-500g": {
     en: entry(
       "Discover the familiar Nature flavour in a smooth YOLA stirred yogurt. The 500 g pot brings a gently sweet dairy character to breakfast, a snack or a simple dessert.",

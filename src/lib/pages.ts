@@ -17,9 +17,9 @@ export const categoryContent = {
   fr: {
     stirred: {
       title: "Yaourt brassé YOLA au Cameroun",
-      short: "À la cuillère, du pot de 500 g au seau de 10 kg.",
+      short: "À la cuillère, du petit pot de 250 g au seau de 10 kg.",
       paragraphs: [
-        "Une texture onctueuse à savourer à la cuillère : les yaourts brassés YOLA se déclinent en Nature, Non Sucré, Vanille, Fraise et Chocolat selon le format. Le pot de 500 g permet d'explorer les cinq parfums ; les contenants plus généreux répondent aux envies de partage.",
+        "Une texture onctueuse à savourer à la cuillère : les yaourts brassés YOLA se déclinent en Nature, Non Sucré, Vanille, Fraise et Chocolat selon le format. Le petit pot de 250 g propose Nature, Fraise et Vanille ; le 500 g permet d'explorer les cinq parfums. Les contenants plus généreux répondent aux envies de partage.",
         "Choisissez 1 kg pour plusieurs moments de dégustation, 2,5 kg pour la table familiale ou une occasion entre proches. Le format 10 kg Nature Sucré fait l'objet d'une demande professionnelle : sa composition et son adéquation à une préparation doivent être vérifiées avec SOEICAM.",
       ],
     },
@@ -52,9 +52,9 @@ export const categoryContent = {
   en: {
     stirred: {
       title: "YOLA stirred yogurt in Cameroon",
-      short: "Spoonable yogurt, from 500 g pots to the 10 kg pack.",
+      short: "Spoonable yogurt, from small 250 g cups to the 10 kg pack.",
       paragraphs: [
-        "Smooth and spoonable, YOLA stirred yogurt comes in Natural, Unsweetened, Vanilla, Strawberry and Chocolate, depending on pack size. The 500 g range brings all five flavours together, while larger packs offer different ways to share the range.",
+        "Smooth and spoonable, YOLA stirred yogurt comes in Natural, Unsweetened, Vanilla, Strawberry and Chocolate, depending on pack size. The small 250 g cups offer Natural, Strawberry and Vanilla; the 500 g range brings all five flavours together. Larger packs offer different ways to share the range.",
         "Choose 1 kg for repeated servings or 2.5 kg for family tables and get-togethers. The photographed 10 kg pack is labelled Nature Sucré and has a dedicated professional enquiry journey: confirm its specification and suitability for any planned preparation with SOEICAM.",
       ],
     },
@@ -101,7 +101,7 @@ export const pageContent = {
     products: {
       title: "Yaourts YOLA : brassés et à boire | SOEICAM",
       description:
-        "Comparez les 19 références YOLA : yaourts brassés et à boire, cinq parfums et des formats de 250 g à 10 kg. Contactez SOEICAM.",
+        "Comparez les 22 références YOLA : yaourts brassés et à boire, cinq parfums et des formats de 250 g à 10 kg. Contactez SOEICAM.",
       h1: "Tous les yaourts YOLA",
     },
     about: {
@@ -150,7 +150,7 @@ export const pageContent = {
     products: {
       title: "YOLA yogurt products: flavours and sizes | SOEICAM",
       description:
-        "Compare all 19 YOLA products: stirred and drinking yogurt, five flavours and formats from 250 g to 10 kg. Enquire with SOEICAM in Cameroon.",
+        "Compare all 22 YOLA products: stirred and drinking yogurt, five flavours and formats from 250 g to 10 kg. Enquire with SOEICAM in Cameroon.",
       h1: "Explore every YOLA yogurt",
     },
     about: {

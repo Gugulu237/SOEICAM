@@ -8,7 +8,7 @@ export default function HomeDiscovery() {
     ? [
         [
           "Votre pause",
-          "Bouteilles de 250 g, 330 g et 500 g, ou brassés de 500 g : choisissez votre façon de savourer YOLA.",
+          "Bouteilles de 250 g, 330 g et 500 g, ou petits pots brassés de 250 g et 500 g : choisissez votre façon de savourer YOLA.",
           "/products",
         ],
         [
@@ -25,7 +25,7 @@ export default function HomeDiscovery() {
     : [
         [
           "Your everyday break",
-          "250 g, 330 g and 500 g bottles, or 500 g stirred yogurt: find your way to enjoy YOLA.",
+          "250 g, 330 g and 500 g bottles, or 250 g and 500 g stirred cups: find your way to enjoy YOLA.",
           "/products",
         ],
         [

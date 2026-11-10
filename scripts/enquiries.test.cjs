@@ -2,6 +2,8 @@ require("./register-ts.cjs");
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const { createHmac } = require("node:crypto");
+const { existsSync } = require("node:fs");
+const path = require("node:path");
 const { validateEnquiry } = require("../src/lib/enquiries.ts");
 const { products } = require("../src/lib/products.ts");
 const { getProductContent } = require("../src/lib/product-content.ts");
@@ -18,8 +20,8 @@ const valid = {
   language: "fr",
   privacy: true,
 };
-test("all 19 products have distinct bilingual content and unchanged gram/kg units", () => {
-  assert.equal(products.length, 19);
+test("all 22 products have distinct bilingual content and unchanged gram/kg units", () => {
+  assert.equal(products.length, 22);
   for (const language of ["fr", "en"]) {
     const descriptions = new Set();
     for (const product of products) {
@@ -30,7 +32,7 @@ test("all 19 products have distinct bilingual content and unchanged gram/kg unit
       descriptions.add(copy.short);
       assert(!product.size.includes("ml"));
     }
-    assert.equal(descriptions.size, 19);
+    assert.equal(descriptions.size, products.length);
   }
 });
 test("enquiry validation accepts optional email but rejects invalid and mismatched data", () => {
@@ -75,9 +77,21 @@ test("product labels are compact and distinguish bottles from stirred yogurt", (
     assert.equal(
       new Set(products.map((p) => getProductContent(p, language).displayName))
         .size,
-      19,
+      products.length,
     );
   }
+});
+test("250g stirred cups have the three launched flavours, images and enquiry support", () => {
+  const cups = products.filter((p) => p.category === "stirred" && p.size === "250g");
+  assert.deepEqual(cups.map((p) => p.flavor), ["nature", "strawberry", "vanilla"]);
+  for (const product of cups) {
+    assert(existsSync(path.join(__dirname, "..", "public", product.image.slice(1))));
+    assert(validateEnquiry({ ...valid, product: product.slug }));
+    assert.equal(validateEnquiry({ ...valid, product: product.slug, category: "drinkable" }), null);
+  }
+  assert.equal(getProductContent(cups[0], "fr").displayName, "Yola Nature 250g");
+  assert.equal(getProductContent(cups[1], "fr").displayName, "Yola Fraise 250g");
+  assert.equal(getProductContent(cups[2], "fr").displayName, "Yola Vanille 250g");
 });
 test("SMTP route rejects unsafe requests and reports accepted versus failed email honestly", async () => {
   const old = { ...process.env };

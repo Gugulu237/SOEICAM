@@ -93,7 +93,7 @@ async function main() {
           ].map((a) => a.getAttribute("href"));
           assert.equal(
             cardLinks.length,
-            19,
+            products.length,
             "catalogue is complete without JavaScript",
           );
           assert(!document.querySelector(".catalog-loading"));

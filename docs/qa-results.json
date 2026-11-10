@@ -1,11 +1,11 @@
 {
-  "pages_checked": 64,
-  "expected_pages": 64,
-  "internal_links_checked": 64,
-  "products_per_language": 19,
-  "sitemap_urls": 64,
-  "legacy_redirects": 24,
+  "pages_checked": 72,
+  "expected_pages": 72,
+  "internal_links_checked": 72,
+  "products_per_language": 22,
+  "sitemap_urls": 72,
+  "legacy_redirects": 27,
   "failures": [],
-  "local_response_ms_median": 52,
+  "local_response_ms_median": 28,
   "note": "HTTP/server-HTML checks, not visual browser QA, Google Search Console inspection or field Core Web Vitals."
 }

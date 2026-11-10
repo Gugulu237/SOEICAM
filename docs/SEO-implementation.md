@@ -2,7 +2,7 @@
 
 ## Scope and evidence
 
-Reviewed the existing Next.js application, all 19 product records, translated interface, supplied packaging photographs and company details. This is an upgrade of the existing website, not a replacement design. Existing photography, milk composition, blue/green palette, image preview, filters and navigation are retained. At the user's subsequent request, headings and product titles use the rounded, connected Lobster display font as a close visual match to the drinking-yogurt labels, in YOLA green on light backgrounds and white on dark bands. It is not asserted to be the original packaging typeface. The font is self-hosted through next/font/local, with its SIL Open Font License included in public/fonts/Lobster-OFL.txt. Body copy, navigation and form controls retain the simple sans-serif font for easy reading.
+Reviewed the existing Next.js application, all 22 product records, translated interface, supplied packaging photographs and company details. This is an upgrade of the existing website, not a replacement design. Existing photography, milk composition, blue/green palette, image preview, filters and navigation are retained. At the user's subsequent request, headings and product titles use the rounded, connected Lobster display font as a close visual match to the drinking-yogurt labels, in YOLA green on light backgrounds and white on dark bands. It is not asserted to be the original packaging typeface. The font is self-hosted through next/font/local, with its SIL Open Font License included in public/fonts/Lobster-OFL.txt. Body copy, navigation and form controls retain the simple sans-serif font for easy reading.
 
 An independent live fetch of soeicam.com was unavailable during the audit. Findings below distinguish source/locally verified behavior from live-search tests that still need account access. No keyword-volume, ranking, traffic or sales results are asserted.
 
@@ -10,7 +10,7 @@ An independent live fetch of soeicam.com was unavailable during the audit. Findi
 
 | Area                | Confirmed before                                                        | Implemented                                                                                                                                        |
 | ------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Catalogue rendering | Entire catalogue sat behind a useSearchParams/Suspense loading fallback | All 19 cards and product links are in the initial server HTML; interactive filters remain                                                          |
+| Catalogue rendering | Entire catalogue sat behind a useSearchParams/Suspense loading fallback | All 22 cards and product links are in the initial server HTML; interactive filters remain                                                          |
 | Localisation        | Browser-only language state, default English HTML, no language URLs     | Complete /fr and /en pages, server-set fr-CM/en-CM, equivalent-page switching and query preservation                                               |
 | Product copy        | Flavour-only H1, generic availability sentence                          | Compact product names, full description, taste, occasions, size/flavour alternatives and prefilled enquiry                                         |
 | Metadata            | Generic English metadata, no canonicals or alternates                   | Page-specific bilingual titles/descriptions, self-canonicals, reciprocal hreflang, x-default French, social metadata                               |
@@ -27,7 +27,7 @@ Each of the following is published under both `/fr` and `/en`:
 
 - Home, products, about, dairy, contact, professionals, privacy.
 - `/products/category/stirred`, `/drinkable`, `/family`, `/professional` (the latter three also under `/products/category/`).
-- All 19 unchanged product slugs, listed in `src/lib/products.ts` and the metadata inventory.
+- The original 19 product slugs remain unchanged; three 250 g stirred-yogurt references bring the range to 22 products, listed in `src/lib/products.ts` and the metadata inventory.
 - `/guides/stirred-or-drinking-yogurt` and `/guides/choosing-family-yogurt-formats`.
 
 The previous `/`, `/products`, `/about`, `/dairy`, `/contact` and 19 product URLs permanently redirect to their French equivalents. Query parameters survive. Invalid products, categories, guides and languages return 404. Filter views canonicalise to the complete localised catalogue rather than becoming separate indexed pages.
@@ -38,7 +38,7 @@ The previous `/`, `/products`, `/about`, `/dairy`, `/contact` and 19 product URL
 
 At the user's request, visible product labels use compact names such as `Yola Nature 500g` and `Yola Nature 330g Yaourt à Boire`, with title-case `Yola` across French and English product titles. Cards and detail-page headings do not have a short description beneath them. Full product descriptions remain further down detail pages; descriptive metadata and image alternatives retain the category information for search and accessibility.
 
-The user confirmed preserving existing product units: 250 g, 330 g and 500 g bottles; 500 g, 1 kg, 2.5 kg and 10 kg stirred packs. URLs are unchanged apart from the language prefix. Some source cups show 500 ml, while the existing product master uses 500 g; no conversion is claimed.
+The user confirmed preserving existing product units: 250 g, 330 g and 500 g bottles; 250 g, 500 g, 1 kg, 2.5 kg and 10 kg stirred packs. The three new cups use the supplied 250 g product names, while their photographed lids show 250 ml. The packaging artwork is not relabelled. Existing URLs are unchanged apart from the language prefix. Some older source cups show 500 ml, while the existing product master uses 500 g; no conversion is claimed.
 
 The photographed 10 kg pack is Nature Sucré. Professional copy makes suitability conditional, especially for sauces, marinades and shawarma. It is not promoted as an unsweetened cooking yogurt or a validated starter for kossam. No nutritional, medical, certification, ingredient-origin, fruit-piece, serving-yield, shelf-life or delivery guarantees have been invented.
 
@@ -71,8 +71,8 @@ Track impressions, clicks, indexed product URLs, FR/EN organic discovery, produc
 ## Verification
 
 - Production build and TypeScript checks; native-WASM compatibility build retains CommonJS config and Webpack.
-- Automated HTML checks of 64 pages: language, unique visible H1, metadata, canonical, reciprocal languages, parseable JSON-LD, all 19 initial catalogue cards, full product paragraphs, local images and reachable internal links.
-- 24 old URL redirects, unknown-route 404s, 64 sitemap entries, robots and product/customer-type form preselection.
+- Automated HTML checks of all localised pages: language, unique visible H1, metadata, canonical, reciprocal languages, parseable JSON-LD, all 22 initial catalogue cards, full product paragraphs, local images and reachable internal links. Current counts are recorded in `qa-results.json`.
+- Legacy URL redirects, unknown-route 404s, sitemap entries, robots and product/customer-type form preselection.
 - Unit checks for bilingual product content, validation, request origin, honeypot, signed token, payload limit, SMTP acceptance/failure and unavailable configuration. Tests send no real email.
 - Browser checks include desktop/mobile branding, mobile menu, category/size/flavour filters, quick view, equivalent-language product navigation and prefilled contact form. A mobile checkbox overflow and an overlapping mobile dairy header were corrected. Wide desktop heroes retain the complete product composition instead of enlarging and cropping it.
 

@@ -19,7 +19,7 @@ export const guides = {
         },
         {
           title: "Comparer les parfums YOLA",
-          text: "Le brassé YOLA 500 g réunit Nature, Non Sucré, Vanille, Fraise et Chocolat. À boire, le format 330 g propose Nature, Non Sucré, Fraise et Vanille. Le 250 g existe en Nature et Fraise, et le 500 g à boire en Nature. Choisissez d'abord la texture, puis le parfum et le format : les possibilités ne sont pas identiques dans chaque gamme.",
+          text: "Le petit pot brassé YOLA 250 g propose Nature, Fraise et Vanille ; le brassé 500 g réunit aussi Non Sucré et Chocolat. À boire, le format 330 g propose Nature, Non Sucré, Fraise et Vanille. La bouteille de 250 g existe en Nature et Fraise, et le 500 g à boire en Nature. Choisissez d'abord la texture, puis le parfum et le format : les possibilités ne sont pas identiques dans chaque gamme.",
         },
         {
           title: "Choisir sans confondre les dénominations",
@@ -67,7 +67,7 @@ export const guides = {
         },
         {
           title: "Compare the YOLA flavours",
-          text: "YOLA stirred yogurt in 500 g brings together Natural, Unsweetened, Vanilla, Strawberry and Chocolate. The 330 g drinking range includes Natural, Unsweetened, Strawberry and Vanilla. The 250 g bottle comes in Natural and Strawberry, and the 500 g drinking bottle in Natural. Start with texture, then choose flavour and pack size: the options differ between ranges.",
+          text: "The small YOLA 250 g stirred cups offer Natural, Strawberry and Vanilla; the 500 g stirred range also includes Unsweetened and Chocolate. The 330 g drinking range includes Natural, Unsweetened, Strawberry and Vanilla. The 250 g bottle comes in Natural and Strawberry, and the 500 g drinking bottle in Natural. Start with texture, then choose flavour and pack size: the options differ between ranges.",
         },
         {
           title: "Read product names carefully",
