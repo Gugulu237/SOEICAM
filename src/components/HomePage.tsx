@@ -135,6 +135,9 @@ export default function HomePage() {
             <Link className="text-link dark" href="/products">
               {copy.common.viewAll}
             </Link>
+            <Link className="text-link dark" href="/pricing">
+              {language === "fr" ? "Tarifs revendeurs" : "Reseller prices"}
+            </Link>
           </div>
           <div className="product-grid featured-grid">
             {featured.map((product) => (

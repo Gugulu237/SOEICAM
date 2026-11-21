@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import SiteShell from "@/components/SiteShell";
 import JsonLd from "@/components/JsonLd";
 import { isLanguage, languages } from "@/lib/locales";
-import { organization } from "@/lib/seo";
+import { organization, websiteSchema } from "@/lib/seo";
 import { company } from "@/lib/company";
 import "../globals.css";
 
@@ -43,6 +43,7 @@ export default async function LocaleLayout({
           {lang === "fr" ? "Aller au contenu" : "Skip to content"}
         </a>
         <JsonLd data={organization} />
+        <JsonLd data={websiteSchema} />
         <SiteShell language={lang}>{children}</SiteShell>
       </body>
     </html>

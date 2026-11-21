@@ -1,0 +1,20 @@
+import type { Language } from "./products";
+
+export const termsSections: Record<Language, [string, string][]> = {
+  fr: [
+    ["Le site et son éditeur", "Ce site est présenté par SOEICAM SARL, entreprise camerounaise de transformation alimentaire qui produit et commercialise la marque de yaourts Yola. Contact : Rue Sion 1, Odza, Yaoundé, Cameroun ; info@soeicam.com ; +237 688 64 22 93."],
+    ["Informations sur les produits", "Les fiches présentent la gamme et les emballages disponibles. Les caractéristiques, ingrédients, allergènes, quantités et conditions de conservation doivent être vérifiés sur l'emballage et auprès de SOEICAM. Les contenus généraux sur les produits laitiers ne constituent pas un conseil médical ni une description certifiée de nos procédés de fabrication."],
+    ["Tarifs et demandes", "Les prix affichés sont indicatifs et distinguent le prix de livraison du prix de vente conseillé au revendeur. La disponibilité, les quantités et les modalités commerciales doivent être confirmées avec SOEICAM. Un formulaire, un brouillon e-mail ou un échange WhatsApp ne constitue pas à lui seul une commande acceptée. Le site ne propose pas de paiement en ligne. Les conditions propres à une vente sont précisées lors de la confirmation commerciale."],
+    ["Marques et contenus", "Les marques et contenus présentés demeurent ceux de leurs titulaires respectifs. Contactez SOEICAM avant de réutiliser ses photos, visuels ou textes dans une communication commerciale. Les préférences de collecte et d'utilisation automatisée sont publiées dans robots.txt ; leur déclaration ne garantit pas leur respect par un tiers."],
+    ["Services externes et confidentialité", "Les liens vers WhatsApp, votre messagerie, les cartes et d'autres sites ouvrent des services externes soumis à leurs propres conditions. La page Confidentialité explique le traitement des demandes et la mesure d'audience facultative. N'envoyez jamais de mot de passe ou de donnée sensible dans une demande."],
+    ["Une question ou une correction", "Contactez info@soeicam.com pour signaler une erreur, demander des précisions ou échanger sur une demande commerciale. Ces informations d'utilisation du site ne remplacent pas les conditions d'une vente ni les droits applicables aux parties."],
+  ],
+  en: [
+    ["Website publisher", "This website is presented by SOEICAM SARL, a Cameroonian food-processing company producing and commercialising Yola yogurt. Contact: Rue Sion 1, Odza, Yaoundé, Cameroon; info@soeicam.com; +237 688 64 22 93."],
+    ["Product information", "Product pages describe the available range and packaging. Check characteristics, ingredients, allergens, quantities and storage instructions on the packaging and with SOEICAM. General dairy content is not medical advice or a certified description of our manufacturing processes."],
+    ["Prices and enquiries", "Published prices are indicative and distinguish the supply price from the recommended reseller selling price. Confirm availability, quantities and commercial arrangements with SOEICAM. A form, email draft or WhatsApp conversation does not by itself constitute an accepted order. This website does not accept online payment. Conditions specific to a sale are supplied during commercial confirmation."],
+    ["Brands and content", "Brands and content remain those of their respective holders. Contact SOEICAM before reusing its photographs, artwork or text in commercial communications. Automated collection and content-use preferences are published in robots.txt; declaring them does not guarantee compliance by third parties."],
+    ["External services and privacy", "Links to WhatsApp, email applications, maps and other websites open external services with their own terms. The Privacy page explains enquiries and optional audience measurement. Never include a password or sensitive information in an enquiry."],
+    ["Questions and corrections", "Contact info@soeicam.com to report an error, ask for clarification or discuss a commercial enquiry. These website-use notes do not replace sale-specific conditions or the parties' applicable rights."],
+  ],
+};

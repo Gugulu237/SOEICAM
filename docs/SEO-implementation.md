@@ -4,7 +4,7 @@
 
 Reviewed the existing Next.js application, all 22 product records, translated interface, supplied packaging photographs and company details. This is an upgrade of the existing website, not a replacement design. Existing photography, milk composition, blue/green palette, image preview, filters and navigation are retained. At the user's subsequent request, headings and product titles use the rounded, connected Lobster display font as a close visual match to the drinking-yogurt labels, in YOLA green on light backgrounds and white on dark bands. It is not asserted to be the original packaging typeface. The font is self-hosted through next/font/local, with its SIL Open Font License included in public/fonts/Lobster-OFL.txt. Body copy, navigation and form controls retain the simple sans-serif font for easy reading.
 
-An independent live fetch of soeicam.com was unavailable during the audit. Findings below distinguish source/locally verified behavior from live-search tests that still need account access. No keyword-volume, ranking, traffic or sales results are asserted.
+An independent live fetch of soeicam.com was unavailable during the original SEO audit. A subsequent direct HTTP check on 20 November 2026 confirmed working robots.txt, sitemap.xml, canonical metadata and homepage Organization JSON-LD. The newer agent-readiness audit does not describe those live responses accurately; its cause is unconfirmed. See agent-readiness.md for the latest implementation and verification. No keyword-volume, ranking, traffic or sales results are asserted.
 
 ## Before and after
 
@@ -16,8 +16,8 @@ An independent live fetch of soeicam.com was unavailable during the audit. Findi
 | Metadata            | Generic English metadata, no canonicals or alternates                   | Page-specific bilingual titles/descriptions, self-canonicals, reciprocal hreflang, x-default French, social metadata                               |
 | Discovery           | Catalogue filters were the main category journey                        | Four substantive range pages, professional/reseller page, two practical guides and contextual links                                                |
 | Company             | Temporary website-development wording                                   | Finished corporate copy using verified Cameroonian ownership, YOLA relationship and contact presence                                               |
-| Indexing            | No sitemap or robots handler                                            | 64 canonical language URLs in sitemap; API excluded in robots; legacy redirects                                                                    |
-| Structured data     | None                                                                    | Organization, Product, genuine flavour ProductGroups, BreadcrumbList and Article                                                                   |
+| Indexing            | No sitemap or robots handler                                            | 76 canonical language URLs in sitemap; API excluded in robots; Content-Signal policy; legacy redirects                                              |
+| Structured data     | None                                                                    | Organization, WebSite, WebPage, Brand, Product, genuine flavour ProductGroups, BreadcrumbList and Article                                            |
 | Enquiries           | Basic required-email mailto draft                                       | Qualified bilingual form, optional email, product preselection, customer types, consent, Hostinger SMTP integration and explicit external handoffs |
 | Measurement         | No configured measurement                                               | Optional consent-gated GA4 hooks and Search Console verification setting; inactive without actual IDs                                              |
 
@@ -25,14 +25,14 @@ An independent live fetch of soeicam.com was unavailable during the audit. Findi
 
 Each of the following is published under both `/fr` and `/en`:
 
-- Home, products, about, dairy, contact, professionals, privacy.
+- Home, products, about, dairy, contact, professionals, privacy, store locator, pricing and website terms.
 - `/products/category/stirred`, `/drinkable`, `/family`, `/professional` (the latter three also under `/products/category/`).
 - The original 19 product slugs remain unchanged; three 250 g stirred-yogurt references bring the range to 22 products, listed in `src/lib/products.ts` and the metadata inventory.
 - `/guides/stirred-or-drinking-yogurt` and `/guides/choosing-family-yogurt-formats`.
 
 The previous `/`, `/products`, `/about`, `/dairy`, `/contact` and 19 product URLs permanently redirect to their French equivalents. Query parameters survive. Invalid products, categories, guides and languages return 404. Filter views canonicalise to the complete localised catalogue rather than becoming separate indexed pages.
 
-`metadata-inventory.csv` maps all 64 URLs to language, qualitative keyword target, title, description, visible H1 and canonical. `qa-results.json` is generated from a running production build rather than inferred from content files.
+`metadata-inventory.csv` maps all 76 URLs to language, qualitative keyword target, title, description, visible H1 and canonical. `qa-results.json` is generated from a running production build rather than inferred from content files.
 
 ## Content and claims
 
@@ -42,7 +42,7 @@ The user confirmed preserving existing product units: 250 g, 330 g and 500 g bot
 
 The photographed 10 kg pack is Nature Sucré. Professional copy makes suitability conditional, especially for sauces, marinades and shawarma. It is not promoted as an unsweetened cooking yogurt or a validated starter for kossam. No nutritional, medical, certification, ingredient-origin, fruit-piece, serving-yield, shelf-life or delivery guarantees have been invented.
 
-Schema describes informational product pages. There are no invented offers, prices, stock, ratings, reviews, GTINs or nutritional data. Syntax and page correspondence are checked locally; Google product rich-result eligibility is not promised because no verified Offer/Review/AggregateRating is supplied. Google Rich Results Test and Search Console remain post-deployment checks.
+Schema describes informational product pages. The owner-supplied indicative prices are now publicly linked from the homepage and rendered without JavaScript at /fr/pricing and /en/pricing. There are no invented offers, stock, ratings, reviews, GTINs or nutritional data. Syntax and page correspondence are checked locally; Google product rich-result eligibility is not promised because no verified Offer/Review/AggregateRating is supplied. Google Rich Results Test and Search Console remain post-deployment checks.
 
 ## Keyword strategy
 

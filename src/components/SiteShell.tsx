@@ -11,6 +11,7 @@ import type { SiteCopy, SiteLanguage } from "@/lib/i18n";
 import { localizedPath } from "@/lib/locales";
 import { company } from "@/lib/company";
 import AnalyticsConsent from "./AnalyticsConsent";
+import AgentTools from "./AgentTools";
 
 type LanguageContextValue = {
   language: SiteLanguage;
@@ -181,6 +182,12 @@ function Footer() {
             <Link href={localizedPath(language, "/privacy")}>
               {language === "fr" ? "Confidentialité" : "Privacy"}
             </Link>
+            <Link href={localizedPath(language, "/pricing")}>
+              {language === "fr" ? "Tarifs revendeurs" : "Reseller prices"}
+            </Link>
+            <Link href={localizedPath(language, "/terms")}>
+              {language === "fr" ? "Conditions d'utilisation" : "Terms of use"}
+            </Link>
           </nav>
         </div>
         <div>
@@ -236,6 +243,7 @@ export default function SiteShell({
       <main id="main-content">{children}</main>
       <Footer />
       <AnalyticsConsent />
+      <AgentTools language={language} />
     </LanguageContext.Provider>
   );
 }

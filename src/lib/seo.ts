@@ -54,14 +54,49 @@ export const organization = {
   logo: absolute("/brand/logos/soeicam.png"),
   email: company.email,
   telephone: company.telephone,
+  description: "Cameroonian food-processing company producing and commercialising Yola stirred and drinking yogurts.",
+  ...(company.sameAs.length ? { sameAs: company.sameAs } : {}),
+  contactPoint: [{
+    "@type": "ContactPoint",
+    telephone: company.telephone,
+    email: company.email,
+    contactType: "customer service",
+    availableLanguage: ["fr", "en"],
+  }],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Rue Sion 1, Odza",
     addressLocality: "Yaoundé",
     addressCountry: "CM",
   },
-  brand: { "@type": "Brand", name: "YOLA" },
+  brand: { "@type": "Brand", "@id": `${company.site}/#yola`, name: "Yola" },
 };
+export const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${company.site}/#website`,
+  url: company.site,
+  name: company.name,
+  inLanguage: ["fr-CM", "en-CM"],
+  publisher: { "@id": `${company.site}/#organization` },
+};
+
+export function homeSchema(language: Language, title: string, description: string) {
+  const url = absolute(localizedPath(language, "/"));
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: title,
+    description,
+    inLanguage: `${language}-CM`,
+    isPartOf: { "@id": `${company.site}/#website` },
+    mainEntity: { "@id": `${company.site}/#organization` },
+    about: { "@id": `${company.site}/#yola` },
+    significantLink: ["/products", "/pricing", "/about", "/contact", "/terms", "/privacy"].map((path) => absolute(localizedPath(language, path))),
+  };
+}
 export function productSchema(product: Product, language: Language) {
   const copy = getProductContent(product, language);
   return {

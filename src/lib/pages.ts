@@ -104,6 +104,16 @@ export const pageContent = {
         "Comparez les 22 références YOLA : yaourts brassés et à boire, cinq parfums et des formats de 250 g à 10 kg. Contactez SOEICAM.",
       h1: "Tous les yaourts YOLA",
     },
+    pricing: {
+      title: "Tarifs revendeurs Yola : livraison et vente conseillée | SOEICAM",
+      description: "Consultez les tarifs Yola en FCFA : prix de livraison et prix de vente conseillé, par format de yaourt brassé ou à boire. Contactez SOEICAM pour confirmer.",
+      h1: "Tarifs revendeurs Yola",
+    },
+    terms: {
+      title: "Conditions d'utilisation du site | SOEICAM",
+      description: "Informations sur SOEICAM SARL, l'utilisation du site, les prix indicatifs, les demandes commerciales et les services externes.",
+      h1: "Conditions d'utilisation",
+    },
     about: {
       title: "SOEICAM, entreprise camerounaise et maison de YOLA",
       description:
@@ -152,6 +162,16 @@ export const pageContent = {
       description:
         "Compare all 22 YOLA products: stirred and drinking yogurt, five flavours and formats from 250 g to 10 kg. Enquire with SOEICAM in Cameroon.",
       h1: "Explore every YOLA yogurt",
+    },
+    pricing: {
+      title: "Yola reseller prices: supply and recommended selling | SOEICAM",
+      description: "View Yola prices in FCFA by stirred or drinking yogurt pack size, with separate supply and recommended selling prices. Confirm details with SOEICAM.",
+      h1: "Yola reseller prices",
+    },
+    terms: {
+      title: "Website terms of use | SOEICAM",
+      description: "Information about SOEICAM SARL, website use, indicative prices, commercial enquiries and external services.",
+      h1: "Website terms of use",
     },
     about: {
       title: "About SOEICAM, the Cameroonian company behind YOLA",
